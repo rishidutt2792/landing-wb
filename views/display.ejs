@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dalviroo App</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">	
+  	<link rel="stylesheet" href="/stylesheets/style.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+
+  </head>
+  <body>
+     <h1> Kitchen Display</h1><br><br><br>
+
+<table id="display" class="table table-bordered">
+  <thead >
+    <tr>
+      <th>Name</th>
+      <th>Quantity</th>
+      <th>Prepared</th>
+      <th>Predicted</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+  </tbody>
+</table>
+<!-- Scripts -->
+ <script>
+
+ function markDone(orderId) {
+    url = "https://dalviroo-app.herokuapp.com/order/update";
+    var orderId = orderId;
+
+    var data = {
+        orderId: orderId
+    }
+
+    $.ajax({
+        type: "PUT",
+        url: url,
+        data: data,
+        success: function(data) {
+            // alert('order prepared');
+            location.reload();
+        },
+        error: function(data) {
+            alert('error complete order');
+
+        }
+    });
+}
+
+
+$(document).ready(function() {
+    url = "https://dalviroo-app.herokuapp.com/display/getDisplay";
+    $.ajax({
+        type: "GET",
+        url: url,
+        success: function(data) {
+            console.log(data);
+            $.each(data.order, function(i, order) {
+                var thtml;
+                var orderId = order.id;
+                if (order.isPrepared != true) {
+                    thtml += '<tr><td>' + order.product.name + '</td><td>' + order.quantity + '</td><td>' + order.totalPrepared + '</td><td>' + order.totalPredicted + '</td><td> <button id =' + orderId + ' onclick="markDone(this.id)"> Done </button>  <div  class=' + orderId + ' hidden> Completed </div>  </td> </tr>';
+                    $('#display').append(thtml);
+                } else {
+                    thtml += '<tr><td>' + order.product.name + '</td><td>' + order.quantity + '</td><td>' + order.totalPrepared + '</td><td>' + order.totalPredicted + '</td><td><div  class=' + orderId + '> Completed </div>  </td> </tr>';
+                    $('#display').append(thtml);
+                }
+            });
+
+        },
+        error: function(data) {
+            alert('error placing order');
+
+        }
+    });
+
+});
+
+</script>
+</body>
+</html>
+

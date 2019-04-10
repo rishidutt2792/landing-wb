@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dalviroo App</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">	
+   <link rel="stylesheet" href="/stylesheets/style.css" />
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+  </head>
+  <body>
+     <h1> Welcome Place Your Order </h1><br><br><br>
+
+<form id="productForm"  class="form-horizontal" >
+    <div class="form-group">
+        <label class="col-xs-4 control-label">Product</label>
+        <div class="col-xs-4">
+         <select id="product" class="form-control" name="productId" data-validation="required"></select>
+        </div><br><br><br>
+         <label class="col-xs-4 control-label">Quantity</label>
+        <div class="col-xs-4">
+         <input id="quantity" class="form-control" name="quantity"></input>
+        </div><br><br><br>
+        <div class="col-xs-6 col-xs-offset-1">
+            <button type="submit"  class="btn btn-primary active" id="submitButton">Submit</button>
+        </div><br><br><br>
+          <a href="https://dalviroo-app.herokuapp.com">
+  <button type="button" id="return" class="btn btn-primary active">Return</button> 
+  </a>
+    </div>
+</div>
+</form>
+
+
+
+
+
+<!-- Scripts -->
+ <script>
+      $(document).ready(function() {
+          var $select = $('#product');
+          //request the JSON data and parse into the select element
+          $.ajax({
+              type: "GET",
+              url: 'https://dalviroo-app.herokuapp.com/product',
+              dataType: 'JSON',
+              success: function(data) {
+                  //clear the current content of the select
+                  $select.html('');
+                  //iterate over the data and append a select option
+                  $.each(data.product, function(key, val) {
+                      $select.append('<option value=' + val.id + '>' + val.name + '</option>');
+                  })
+              },
+              error: function() {
+                  //if there is an error append a 'none available' option
+                  $select.html('<option id="-1">none available</option>');
+              }
+              // });
+          });
+
+
+          $("#submitButton").click(function(e) {
+              e.preventDefault();
+              url = "https://dalviroo-app.herokuapp.com/order/create";
+              var inputData = {
+                  productId: $('#product').val(),
+                  quantity: $('#quantity').val()
+              };
+              $.ajax({
+                  type: "POST",
+                  data: inputData,
+                  url: url,
+                  success: function(data) {
+                      alert('order placed successfully');
+                      $('#quantity').html();
+                      $('#product').html();
+                  },
+                  error: function(data) {
+                      alert('error placing order');
+                      $('#quantity').html();
+                      $('#product').html();
+                  }
+              });
+
+          });
+      });
+
+</script>
+
+
+
+  </body>
+</html>
+

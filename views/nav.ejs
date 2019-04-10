@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dalviroo App</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">	
+  	<link rel="stylesheet" href="/stylesheets/style.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+  <!-- <div class="main"> 
+   <h2>Select one option</h2>
+  <a href="http://localhost:3000/find"  class="btn btn-primary active" role="button">Find</a>
+  <a onclick="submitFunction()" class="btn btn-primary active" role="button">Add Product</a> -->
+<!--   <p> Welcome to patel Tyres </p>
+ -->
+ <div id="mainDiv">
+<img id="landingImg"  src="images/upgrade.png" ></img>
+
+<h4>We are upgrading to a better experience</h4>
+<h4>Please leave your email below and we will get back to you</h4>
+</div>
+
+ <input type="text" id="email" class="form-control" placeholder="Email" name="email">
+      <div class="input-group-btn">
+        <button id="submitButton" class="btn btn-default" type="submit">Submit</button>
+      </div>
+  </div>
+
+
+
+
+
+<!-- Scripts -->
+      <script>
+         $("#submitButton").click(function(e) {
+              e.preventDefault();
+              url = "http://localhost:3000/create";
+              var inputData = {
+                  email: $('#email').val(),
+              };
+              $.ajax({
+                  type: "POST",
+                  data: inputData,
+                  url: url,
+                  success: function(data) {
+                      alert('email submitted');
+                     
+                  },
+                  error: function(data) {
+                      alert('error placing order');
+                     
+                  }
+              });
+
+          });
+
+
+</script>
+
+
+
+  </body>
+</html>
+
