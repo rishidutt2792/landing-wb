@@ -11,8 +11,7 @@
         "app": "^0.1.0",
         "async": "~0.1.22",
         "asyncawait": "^1.0.6",
-        "bcrypt": "^1.0.2",
-        "bcryptjs": "^2.4.3",
+
         "bluebird": "^3.5.0",
         "body-parser": "~1.17.1",
         "connect-redis": "^3.3.0",
