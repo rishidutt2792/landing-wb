@@ -7,6 +7,9 @@ body {
 a {
   color: #00B7FF;
 }
+h4 {
+  line-height: 1.4em;
+}
 
 .productName{
   margin-top: -10%;
@@ -127,7 +130,7 @@ font-size: 200%;
 }
 #mainDiv {
   text-align: center;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 .productName{
     margin-top: -60%;
