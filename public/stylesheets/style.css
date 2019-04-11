@@ -11,7 +11,7 @@ a {
 .productName{
   margin-top: -10%;
 	text-align: left;
-	font-size: xx-large;	
+	font-size: xx-large;
 }
 
 .input{
@@ -19,13 +19,21 @@ a {
 }
 
 #mainDiv {
- margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 25px;
+  margin-top: 30px;
 }
 
 #landingImg {
-  width:60%; 
-  height:70vh; 
-  margin-left:20%;
+  width:30%;
+}
+
+#email {
+  width: 50%;
+  height: 48px;
+  margin: auto;
 }
 
 .main {
@@ -38,10 +46,10 @@ a {
   border:solid;
 }
 .userName {
- font-size: x-large; 
+ font-size: x-large;
 }
 .password {
- font-size: x-large; 
+ font-size: x-large;
 }
 
 .userNameInput {
@@ -65,7 +73,7 @@ a {
     width: 100%;
     display:block;
     position:relative;
-    margin-top: 100px;
+    margin-top: 35px;
     text-align: center;
     height: auto;
 }
@@ -77,8 +85,6 @@ a {
     cursor: pointer;
     max-width: 180%;
     max-height: 100%;
-    width:250px;
-    height: 82;
     font-size: 120%;
     text-align: center;
   }
@@ -86,7 +92,7 @@ a {
  .btn2{
   float:left;
   border:solid;
- } 
+ }
 
 h1 {
   color : #000000;
@@ -100,7 +106,11 @@ font-size: 200%;
 }
 
 #submitButton {
-margin-left: 57%;
+  border: none;
+  background-color: #f50;
+  padding: .75em 2.5em;
+  color: #fff;
+  font-family: inherit;
 }
 
 #return {
@@ -108,15 +118,26 @@ margin-left: 57%;
 }
 
 
-@media only screen and(max-width: 650px){
+@media only screen and (max-width: 650px){
 .main {
 	text-align: center;
     margin: auto;
-    margin-top: 60%;  
+    margin-top: 60%;
     width: inherit !important;
+}
+#mainDiv {
+  text-align: center;
+  margin-top: 30px;
 }
 .productName{
     margin-top: -60%;
+}
+h4 {
+  width: 90%;
+  font-size: 16px;
+}
+#email {
+  width: 90%;
 }
 
 #return {
@@ -125,7 +146,7 @@ margin-left: 57%;
 
 
 #landingImg {
-  width:100%; 
+  width:100%;
 }
 
 }
