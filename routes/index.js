@@ -32,4 +32,26 @@ router.post('/create', function (req, res) {
 	});
 });
 
+
+router.post('/get', function (req, res) {
+	// const emailData = req.body.email
+	// const result = await emailModel.query();
+
+	// res.send(result);
+
+	const result = emailModel.query().then(email => {
+		res.status(200);
+		res.send(email)
+		res.json({
+			success: true,
+			message: result
+		});
+	}).catch(err => {
+		res.status(500);
+		res.json({
+			success: false,
+			message: err
+		});
+	});
+});
 module.exports = router;
