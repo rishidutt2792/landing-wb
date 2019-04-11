@@ -30,7 +30,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/create', index);
+app.all('*', function(req, res) {
+  res.redirect('https://www.wishberry.in');
+});
 
 // app.use('/order', order);
 // app.use('/product', product);
