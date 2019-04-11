@@ -11,7 +11,6 @@
         "app": "^0.1.0",
         "async": "~0.1.22",
         "asyncawait": "^1.0.6",
-
         "bluebird": "^3.5.0",
         "body-parser": "~1.17.1",
         "connect-redis": "^3.3.0",
@@ -37,7 +36,6 @@
         "sendmail": "^1.1.1",
         "serve-favicon": "~2.4.2",
         "session": "^0.1.0",
-        "sqlite3": "^3.1.8",
         "winston": "^2.3.1"
     },
     "engines": {
